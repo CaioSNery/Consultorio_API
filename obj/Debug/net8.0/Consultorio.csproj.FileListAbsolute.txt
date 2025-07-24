@@ -8,6 +8,7 @@ C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Consultorio.pdb
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Azure.Core.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Azure.Identity.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Humanizer.dll
+C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
@@ -130,6 +131,7 @@ C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\Consultorio.AssemblyInfo.cs
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\Consultorio.csproj.CoreCompileInputs.cache
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\Consultorio.MvcApplicationPartsAssemblyInfo.cs
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\Consultorio.MvcApplicationPartsAssemblyInfo.cache
+C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\Consultorio.sourcelink.json
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\staticwebassets.build.json
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\staticwebassets.development.json
 C:\Projetos\Consultorio\Consultorio\obj\Debug\net8.0\staticwebassets\msbuild.Consultorio.Microsoft.AspNetCore.StaticWebAssets.props
