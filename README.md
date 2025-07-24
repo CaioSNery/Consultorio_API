@@ -12,6 +12,7 @@ API desenvolvida em ASP.NET Core 8 para gerenciamento de consultas, pacientes, p
 - SQL Server
 - Injeção de Dependência
 - Fluent API
+- JWT
 
 
 ---
@@ -26,7 +27,7 @@ Consultorio/
 ├── Interfaces/         # Interfaces para services e repos
 ├── Models/             # Entidades principais
 ├── Services/           # Regras de negócio
-├── Settings/           # Configurações externas como Twilio
+├── Settings/           # Configurações externas como Twilio/JwT
 ├── appsettings.json    # Configurações da aplicação
 ```
 
