@@ -1,107 +1,133 @@
 
 # 🏥 Consultorio API
 
-API desenvolvida em ASP.NET Core 8 para gerenciamento de consultas, pacientes, profissionais e especialidades médicas.
+API REST desenvolvida em **ASP.NET Core 8**, focada no gerenciamento de **consultas médicas**, **pacientes**, **profissionais** e **especialidades**. Com autenticação via **JWT**, regras de negócio com **Fluent API**, mapeamento com **AutoMapper** e deploy automatizado via **Azure App Service**.
 
 ---
 
-## 🔧 Tecnologias Utilizadas
+## 🚀 Funcionalidades
+
+- ✅ Agendamento inteligente de consultas (sem conflitos para profissionais)
+- 🔐 Autenticação segura com JWT
+- 🧑‍⚕️ Cadastro completo de pacientes, médicos e especialidades
+- 🔁 Mapeamento automático com AutoMapper
+- 📲 Notificações SMS via Twilio
+- 🧭 Deploy contínuo na Azure
+- 📘 Documentação via Swagger
+
+---
+
+## 🔧 Tecnologias
 
 - ASP.NET Core 8
 - Entity Framework Core
 - SQL Server
-- Injeção de Dependência
+- JWT + Swagger
+- AutoMapper
 - Fluent API
-- JWT
-
+- Azure App Service
+- Twilio SMS
 
 ---
 
 ## 📁 Estrutura do Projeto
 
-```bash
+```
 Consultorio/
-├── Controllers/        # Controllers da API
-├── Data/               # Configuração do DbContext
-├── Dtos/               # Data Transfer Objects (entrada/saída)
-├── Interfaces/         # Interfaces para services e repos
+├── Controllers/        # Endpoints da API
+├── Data/               # DbContext e configurações do EF Core
+├── Dtos/               # Modelos de entrada e saída
+├── Interfaces/         # Abstrações para services e repositórios
 ├── Models/             # Entidades principais
-├── Services/           # Regras de negócio
-├── Settings/           # Configurações externas como Twilio/JwT
-├── appsettings.json    # Configurações da aplicação
+├── Services/           # Lógica de negócio
+├── Mappings/           # Perfis do AutoMapper
+├── Settings/           # Configurações externas (ex: Twilio)
+├── appsettings.json    # Conexão com o banco e chaves
 ```
 
 ---
 
-## 🗃️ Endpoints Principais
+## 🔐 Autenticação JWT
 
-### 🔹 Pacientes
+- Login via: `POST /api/auth/login`  
+- O token JWT deve ser enviado no header das requisições protegidas:
+
+```http
+Authorization: Bearer {token}
+```
+
+---
+
+## 📌 Regras de Agendamento
+
+- 🔒 Valida se **não existe outra consulta para o mesmo profissional**, no **mesmo dia e horário**
+- 🧠 Verifica se o **paciente**, **profissional** e **especialidade** existem e estão ativos
+- 🕓 Filtra e exibe **horários disponíveis** para o agendamento
+
+---
+
+## 📲 Endpoints
+
+### Pacientes
 - `GET /api/pacientes`
 - `POST /api/pacientes`
 - `PUT /api/pacientes/{id}`
 - `DELETE /api/pacientes/{id}`
 
-### 🔹 Profissionais
+### Profissionais
 - `GET /api/profissionais`
 - `POST /api/profissionais`
+- `DELETE /api/profissionais/{id}`
 
-### 🔹 Especialidades
+### Especialidades
 - `GET /api/especialidades`
 - `POST /api/especialidades`
 
-### 🔹 Consultas
-- `POST /api/consultas` → Cria uma nova consulta
-- `GET /api/consultas/por-paciente/{id}` → Lista as consultas por paciente
+### Consultas
+- `POST /api/consultas`
+- `GET /api/consultas/por-paciente/{id}`
+- `PUT /api/consultas/{id}`
+- `DELETE /api/consultas/{id}`
 
 ---
 
-## ⚙️ Configuração do Banco de Dados
-
-A string de conexão está em `appsettings.json` . Exemplo:
+## ⚙️ Banco de Dados
 
 ```json
 "ConnectionStrings": {
-  "Default": "Server=localhost\SQLEXPRESS01;Database=ConsultorioDB;User Id=seu_usuario;Password=sua_senha;"
+  "Default": "Server=azure_sql_server_url;Initial Catalog=ConsultorioDB;Persist Security Info=False;User ID=Your_ADMIN;Password=Your_Password;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 }
 ```
 
----
-
-## 📲 Notificações com Twilio (SMS)
-
-As notificações por SMS estão integradas via [Twilio](https://www.twilio.com/)-
-[Documentação](https://www.twilio.com/docs):
-
-- `TWILIO__AccountSID`
-- `TWILIO__AuthToken`
-- `TWILIO__From`
+> Use `dotnet ef database update` para aplicar as migrações.
 
 ---
 
-## 🚀 Executando a API
+## 🔁 AutoMapper
 
-```bash
-# Restaure os pacotes
-dotnet restore
-
-# Rode as migrações (se usar EF Core)
-dotnet ef database update
-
-# Inicie a API
-dotnet run
-```
+Mapeia DTOs e Entidades utilizando perfis definidos em `Mappings/AutoMapperProfile.cs`.
 
 ---
 
-## 📌 Observações
+## 🌐 Azure
 
-- Projeto em desenvolvimento para aprendizado e portfólio.
-- Boas práticas utilizadas: DTOs, Services,  e injeção de dependência.
+Deploy feito via CLI ou Visual Studio.
+
+- URL pública: [consultoriocaio-h9fab5bud3aghnaf.brazilsouth-01.azurewebsites.net/swagger](consultoriocaio-h9fab5bud3aghnaf.brazilsouth-01.azurewebsites.net/swagger)
+- Documentação Swagger: `/swagger`
+
+---
+
+## 📘 Swagger
+
+Interface visual para testar os endpoints da API.  
+Suporta autenticação via JWT Token.
 
 ---
 
 ## 👨‍💻 Autor
 
-**Caio de Souza Nery**
+**Caio de Souza Nery**  
+Desenvolvedor backend apaixonado por organização, automação e APIs confiáveis.
 
-[GitHub: CaioSNery](https://github.com/CaioSNery)
+---
