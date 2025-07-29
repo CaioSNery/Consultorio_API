@@ -9,7 +9,7 @@ namespace Consultorio.Interfaces
 {
     public interface IProfissionalService
     {
-        Task<ProfissionalDTO> AddProfissionalAsync(Profissional profissional);
+        Task<ProfissionalDTO> AddProfissionalAsync(ProfissionalCreateDTO dto);
         Task<object> BuscarProfissionalPorIdAsync(int id);
 
         Task<bool> DeletarProfissionalAsync(int id);

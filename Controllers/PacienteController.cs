@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consultorio.Dtos;
 using Consultorio.Interfaces;
 using Consultorio.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Consultorio.Controller
+namespace Consultorio.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -21,9 +22,9 @@ namespace Consultorio.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPaciente([FromBody] Paciente paciente)
+        public async Task<IActionResult> AddPaciente([FromBody] PacienteCreateDTO dto)
         {
-            var resultado = await _service.AddPacienteAsync(paciente);
+            var resultado = await _service.AddPacienteAsync(dto);
             return Ok(resultado);
         }
 

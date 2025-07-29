@@ -5,6 +5,8 @@ C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Consultorio.deps.json
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Consultorio.runtimeconfig.json
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Consultorio.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Consultorio.pdb
+C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\AutoMapper.dll
+C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Azure.Core.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Azure.Identity.dll
 C:\Projetos\Consultorio\Consultorio\bin\Debug\net8.0\Humanizer.dll

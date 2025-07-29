@@ -13,6 +13,9 @@ using Microsoft.IdentityModel.Tokens;
 using TwilioSettings = Consultorio.Settings.TwilioSettings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
+using Consultorio.Mappings;
+using AutoMapper;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Consultorio API", Version = "v1" });
 
-    // Define o esquema de segurança JWT
+    
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
         Description = "Insira o token JWT no campo abaixo: Bearer {seu_token}",
@@ -91,24 +94,34 @@ builder.Services.AddScoped<IPacienteService, PacienteService>();
 builder.Services.AddScoped<IProfissionalService, ProfissionalService>();
 builder.Services.AddScoped<ISmSService, SmSService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<AutoMapperProfile>();
+    cfg.ShouldMapMethod = m => false; 
+}, typeof(AutoMapperProfile).Assembly);
+
 builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twilio"));
+
 builder.Services.AddEndpointsApiExplorer();
 
 
-var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+var app = builder.Build();
 
 app.UseHttpsRedirection();
 
 app.UseRouting();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
+
+
+
+app.UseSwagger();
+
+app.UseSwaggerUI();
+
 
 app.MapControllers();
 

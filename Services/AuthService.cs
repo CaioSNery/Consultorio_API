@@ -40,6 +40,6 @@ namespace Consultorio.Services
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
-    }  
+        }  
         }
     }

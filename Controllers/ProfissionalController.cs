@@ -7,7 +7,7 @@ using Consultorio.Interfaces;
 using Consultorio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Consultorio.Controller
+namespace Consultorio.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -20,16 +20,11 @@ namespace Consultorio.Controller
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddMedico([FromBody]ProfissionalDTO dto)
+        public async Task<IActionResult> AddMedico([FromBody]ProfissionalCreateDTO dto)
         {
-            var profissional = new Profissional
-        {
-            Nome = dto.NomeMedico,
-            EspecialidadeId = dto.EspecialidadeId
-        };
-
-        var result = await _service.AddProfissionalAsync(profissional);
-        return Ok(result);
+    
+            var result = await _service.AddProfissionalAsync(dto);
+             return Ok(result);
         }
         [HttpGet]
         public async Task<IActionResult> ListarMedicos()

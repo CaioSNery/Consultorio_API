@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Consultorio.Data;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
@@ -14,23 +15,23 @@ namespace Consultorio.Services
     public class ProfissionalService : IProfissionalService
     {
         private readonly AppDbContext _context;
-        public ProfissionalService(AppDbContext context)
+        private readonly IMapper _mapper;
+
+
+        public ProfissionalService(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public async Task<ProfissionalDTO> AddProfissionalAsync(Profissional profissional)
+        public async Task<ProfissionalDTO> AddProfissionalAsync(ProfissionalCreateDTO dto)
         {
+
+            var profissional = _mapper.Map<Profissional>(dto);
             _context.Profissionais.Add(profissional);
-            await _context.SaveChangesAsync();
             
-            var especialidade = await _context.Especialidades
-            .FirstOrDefaultAsync(e => e.Id == profissional.EspecialidadeId);
-            return new ProfissionalDTO
-            {
-                Id = profissional.Id,
-                NomeMedico = profissional.Nome,
-                EspecialidadeId=profissional.Id
-            };
+            await _context.SaveChangesAsync();
+        
+            return _mapper.Map<ProfissionalDTO>(profissional);
         }
 
         public async Task<object> BuscarProfissionalPorIdAsync(int id)

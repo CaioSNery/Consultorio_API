@@ -9,7 +9,7 @@ namespace Consultorio.Interfaces
 {
     public interface IPacienteService
     {
-        Task<PacienteDTO> AddPacienteAsync(Paciente paciente);
+        Task<PacienteDTO> AddPacienteAsync(PacienteCreateDTO dto);
 
         Task<bool> DeletarPacienteAsync(int id);
 

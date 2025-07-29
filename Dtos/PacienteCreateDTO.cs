@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 
 namespace Consultorio.Dtos
 {
-    public class PacienteDTO
+    public class PacienteCreateDTO
     {
-        public int Id { get; set; }
         public string NomePaciente { get; set; }
         public string Cpf { get; set; }
 
+        public int Idade { get; set; }
+
+        public DateTime DataNascimento { get; set; }
+
+        public string Telefone{ get; set; }
     }
 }

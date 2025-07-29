@@ -7,7 +7,7 @@ using Consultorio.Interfaces;
 using Consultorio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Consultorio.Controller
+namespace Consultorio.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

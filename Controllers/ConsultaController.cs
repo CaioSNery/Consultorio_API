@@ -7,7 +7,7 @@ using Consultorio.Interfaces;
 using Consultorio.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Consultorio.Controller
+namespace Consultorio.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -34,7 +34,7 @@ namespace Consultorio.Controller
            return Ok(resultado);
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> ApagarConsulta(int id)
         {
             var consulta = await _service.DeletarConsultaAsync(id);

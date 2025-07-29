@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Consultorio.Data;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
@@ -17,10 +18,12 @@ namespace Consultorio.Services
 
         private readonly AppDbContext _context;
         private readonly ISmSService _service;
-        public ConsultaService(AppDbContext context, ISmSService service)
+        private readonly IMapper _mapper;
+        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper)
         {
             _context = context;
             _service = service;
+            _mapper = mapper;
         }
         public async Task<ConsultaDTO> AtualizarConsultaAsync(int id, Consulta consultaupdate)
         {
@@ -45,13 +48,7 @@ namespace Consultorio.Services
                 await _service.EnviarSMSAsync(paciente.Telefone, msg);
             }
 
-            return new ConsultaDTO
-            {
-                PacienteId = consultaupdate.PacienteId,
-                ProfissionalId = consultaupdate.ProfissionalId,
-                EspecialidadeId = consultaupdate.EspecialidadeId,
-                DataConsulta=consultaupdate.DataConsulta
-            };
+            return _mapper.Map<ConsultaDTO>(consulta);
         }
 
         public async Task<object> BuscarConsultasPorId(int id)
@@ -105,14 +102,7 @@ namespace Consultorio.Services
             }
             
 
-            return new ConsultaDTO
-            {
-                Id = consulta.Id,
-                PacienteId = consulta.PacienteId,
-                EspecialidadeId = consulta.EspecialidadeId,
-                ProfissionalId = consulta.ProfissionalId
-
-            };
+            return _mapper.Map<ConsultaDTO>(consulta);
         }
     }
 }

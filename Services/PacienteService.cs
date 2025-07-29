@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Consultorio.Data;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
@@ -14,20 +15,20 @@ namespace Consultorio.Services
     {
 
         private readonly AppDbContext _context;
-        public PacienteService(AppDbContext context)
+        
+        private readonly IMapper _mapper;
+        public PacienteService(AppDbContext context, IMapper mapper)
         {
-            _context=context;
+            _context = context;
+            _mapper = mapper;
         }
-        public async Task<PacienteDTO> AddPacienteAsync(Paciente paciente)
+        public async Task<PacienteDTO> AddPacienteAsync(PacienteCreateDTO dto)
         {
+            var paciente = _mapper.Map<Paciente>(dto);
+
             _context.Pacientes.Add(paciente);
             await _context.SaveChangesAsync();
-            return new PacienteDTO
-            {
-                Id = paciente.Id,
-                NomePaciente = paciente.Nome,
-                Cpf = paciente.Cpf
-            };
+            return _mapper.Map<PacienteDTO>(paciente);
         }
 
         public async Task<bool> AtualizarPacienteAsync(int id, Paciente pacienteupdate)
