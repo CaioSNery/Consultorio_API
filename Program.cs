@@ -16,6 +16,8 @@ using System;
 using Consultorio.Mappings;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Consultorio_API.Interfaces;
+using Consultorio_API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -92,8 +94,18 @@ builder.Services.AddScoped<IConsultaService, ConsultaService>();
 builder.Services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 builder.Services.AddScoped<IPacienteService, PacienteService>();
 builder.Services.AddScoped<IProfissionalService, ProfissionalService>();
-builder.Services.AddScoped<ISmSService, SmSService>();
+
+// builder.Services.AddScoped<ISmSService, SmSService>();
+// builder.Services.AddScoped<IMensagemService, MensagemService>();
+
+// RETIRAR O COMENTARIO PARA TESTE COM TWILIO
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped<IMensagemService, MensagemFakeService>();
+builder.Services.AddScoped<ISmSService, SmsFakeService>();
+//TESTE 
+
+
 builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddProfile<AutoMapperProfile>();

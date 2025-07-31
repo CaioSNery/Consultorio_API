@@ -25,7 +25,7 @@ namespace Consultorio.Services
         {
             await MessageResource.CreateAsync(
                 to: new PhoneNumber(numero),
-                from: new PhoneNumber(_settings.From),
+                from: new PhoneNumber(_settings.FromSmS),
                 body: mensagem
             );
         }

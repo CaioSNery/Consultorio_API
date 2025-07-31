@@ -7,6 +7,7 @@ using Consultorio.Data;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
 using Consultorio.Models;
+using Consultorio_API.Interfaces;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyModel.Resolution;
@@ -19,11 +20,18 @@ namespace Consultorio.Services
         private readonly AppDbContext _context;
         private readonly ISmSService _service;
         private readonly IMapper _mapper;
-        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper)
+
+        private readonly IMensagemService _mensagemService;
+        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper,IMensagemService mensagemService)
         {
-            _context = context;
-            _service = service;
-            _mapper = mapper;
+
+            {
+                _context = context;
+                _service = service;
+                _mapper = mapper;
+                _mensagemService = mensagemService;
+
+            }
         }
         public async Task<ConsultaDTO> AtualizarConsultaAsync(int id, Consulta consultaupdate)
         {
@@ -97,8 +105,12 @@ namespace Consultorio.Services
 
             if (!string.IsNullOrWhiteSpace(paciente.Telefone))
             {
-                 string msg = $"Olá {paciente.Nome}, o dia da sua consulta esta agendada para {consulta.DataConsulta:dd/MM/yyyy 'às' HH:mm} , por favor compareça com  15 minutos de antecedencia.";
+                string msg = $"Olá {paciente.Nome}, o dia da sua consulta esta agendada para {consulta.DataConsulta:dd/MM/yyyy 'às' HH:mm} , por favor compareça com  15 minutos de antecedencia.";
+
                 await _service.EnviarSMSAsync(paciente.Telefone, msg);
+
+                await _mensagemService.EnviarMsgWhatsAsync(paciente.Telefone, msg);
+
             }
             
 

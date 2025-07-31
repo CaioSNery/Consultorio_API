@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
 using Consultorio.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Consultorio.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProfissionalController : ControllerBase

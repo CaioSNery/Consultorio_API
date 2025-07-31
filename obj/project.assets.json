@@ -5899,19 +5899,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\computador\\.nuget\\packages\\": {}
+    "C:\\Users\\Caio Nery\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\Consultorio\\Consultorio\\Consultorio.csproj",
+      "projectUniqueName": "C:\\Projetos\\Consultorio\\Consultorio_API\\Consultorio.csproj",
       "projectName": "Consultorio",
-      "projectPath": "C:\\Projetos\\Consultorio\\Consultorio\\Consultorio.csproj",
-      "packagesPath": "C:\\Users\\computador\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\Consultorio\\Consultorio\\obj\\",
+      "projectPath": "C:\\Projetos\\Consultorio\\Consultorio_API\\Consultorio.csproj",
+      "packagesPath": "C:\\Users\\Caio Nery\\.nuget\\packages\\",
+      "outputPath": "C:\\Projetos\\Consultorio\\Consultorio_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\computador\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Caio Nery\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -5996,7 +5996,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.410/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

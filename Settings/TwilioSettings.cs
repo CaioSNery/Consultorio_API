@@ -9,6 +9,7 @@ namespace Consultorio.Settings
     {
         public string AccountSID { get; set; }
         public string AuthToken { get; set; }
-        public string From { get; set; }
+        public string FromSmS { get; set; }
+        public string FromWhatsApp{ get; set; }
     }
 }
