@@ -26,7 +26,7 @@ API REST desenvolvida em **ASP.NET Core 8**, focada no gerenciamento de **consul
 - AutoMapper
 - Fluent API
 - Azure App Service
-- Twilio SMS
+- Twilio SMS+WhatsApp
 
 ---
 
