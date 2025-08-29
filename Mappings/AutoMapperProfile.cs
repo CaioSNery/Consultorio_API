@@ -1,15 +1,12 @@
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using AutoMapper;
 using Consultorio.Dtos;
 using Consultorio.Models;
 
 namespace Consultorio.Mappings
 {
-    public class AutoMapperProfile:Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
@@ -22,7 +19,7 @@ namespace Consultorio.Mappings
             CreateMap<PacienteCreateDTO, Paciente>()
             .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.NomePaciente));
 
-        
+
             CreateMap<Profissional, ProfissionalDTO>()
             .ForMember(dest => dest.NomeMedico, opt => opt.MapFrom(src => src.Nome));
 
@@ -33,8 +30,10 @@ namespace Consultorio.Mappings
             .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.NomeMedico))
             .ForMember(dest => dest.EspecialidadeId, opt => opt.MapFrom(src => src.EspecialidadeId));
 
-        
+
             CreateMap<ConsultaDTO, Consulta>().ReverseMap();
+
+            CreateMap<EspecialidadeDTO, Especialidade>().ReverseMap();
 
 
         }

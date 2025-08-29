@@ -17,12 +17,22 @@ namespace Consultorio.Maps
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Nome).IsRequired();
-            
+
+
 
             builder.HasOne(p => p.Especialidade)
               .WithMany(p => p.Profissionais)
                .HasForeignKey(e => e.EspecialidadeId)
                .OnDelete(DeleteBehavior.Restrict);
+
+
+
+
+
+
+
+
+
         }
     }
 }

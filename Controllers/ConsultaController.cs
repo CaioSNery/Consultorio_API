@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Consultorio.Controllers
 {
-    [Authorize]
+
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class ConsultaController : ControllerBase
     {
         private readonly IConsultaService _service;
@@ -21,7 +21,7 @@ namespace Consultorio.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost("consulta")]
         public async Task<IActionResult> AddConsulta([FromBody] ConsultaDTO dto)
         {
             var consulta = new Consulta
@@ -30,13 +30,13 @@ namespace Consultorio.Controllers
                 ProfissionalId = dto.ProfissionalId,
                 EspecialidadeId = dto.EspecialidadeId,
                 DataConsulta = dto.DataConsulta,
-                
+
             };
-           var resultado=await _service.RealizarAgendamentoAsync(consulta);
-           return Ok(resultado);
+            var resultado = await _service.RealizarAgendamentoAsync(consulta);
+            return Ok(resultado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("consulta/{id:int}")]
         public async Task<IActionResult> ApagarConsulta(int id)
         {
             var consulta = await _service.DeletarConsultaAsync(id);
@@ -45,15 +45,15 @@ namespace Consultorio.Controllers
             return Ok("Agendamento apagado");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("consulta/{id:int}")]
         public async Task<IActionResult> AtualizarConsulta(int id, [FromBody] Consulta consultaupdate)
         {
             var consulta = await _service.AtualizarConsultaAsync(id, consultaupdate);
-            if (consulta==null) return NotFound("Consulta nao encontrada");
+            if (consulta == null) return NotFound("Consulta nao encontrada");
             return Ok("Consulta atualizada com sucesso");
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("consulta/{id:int}")]
         public async Task<IActionResult> BuscarConsulta(int id)
         {
             var consulta = await _service.BuscarConsultasPorId(id);
@@ -62,11 +62,18 @@ namespace Consultorio.Controllers
             return Ok(consulta);
         }
 
-        [HttpGet]
+        [HttpGet("consultas/dia")]
         public async Task<IActionResult> ConsultarDoDIa()
         {
             var consulta = await _service.ObterConsultarDoDiaAsyn();
-            return Ok (consulta);
+            return Ok(consulta);
+        }
+
+        [HttpGet("consultas")]
+        public async Task<IActionResult> ListarConsultas()
+        {
+            var consultas = await _service.ListarTodasConsultasAsync();
+            return Ok(consultas);
         }
     }
 }

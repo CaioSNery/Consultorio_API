@@ -22,7 +22,7 @@ namespace Consultorio.Services
         private readonly IMapper _mapper;
 
         private readonly IMensagemService _mensagemService;
-        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper,IMensagemService mensagemService)
+        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper, IMensagemService mensagemService)
         {
 
             {
@@ -41,7 +41,7 @@ namespace Consultorio.Services
             var paciente = await _context.Pacientes.FirstOrDefaultAsync(p => p.Id == consultaupdate.PacienteId);
             if (paciente == null) throw new Exception("Paciente não encontrado");
 
-            
+
 
             consulta.PacienteId = consultaupdate.PacienteId;
             consulta.ProfissionalId = consultaupdate.ProfissionalId;
@@ -112,9 +112,20 @@ namespace Consultorio.Services
                 await _mensagemService.EnviarMsgWhatsAsync(paciente.Telefone, msg);
 
             }
-            
+
 
             return _mapper.Map<ConsultaDTO>(consulta);
+        }
+
+
+
+        public async Task<IEnumerable<Consulta>> ListarTodasConsultasAsync()
+        {
+            var consultas = await _context.Consultas
+            .AsNoTracking()
+            .ToListAsync();
+
+            return _mapper.Map<IEnumerable<Consulta>>(consultas);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Consultorio.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class ProfissionalController : ControllerBase
     {
         private readonly IProfissionalService _service;
@@ -21,20 +21,22 @@ namespace Consultorio.Controllers
             _service = service;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddMedico([FromBody]ProfissionalCreateDTO dto)
+        [HttpPost("profissional")]
+        public async Task<IActionResult> AddMedico([FromBody] ProfissionalCreateDTO dto)
         {
-    
+
             var result = await _service.AddProfissionalAsync(dto);
-             return Ok(result);
+            return Ok(result);
         }
-        [HttpGet]
+
+        [HttpGet("profissionais")]
         public async Task<IActionResult> ListarMedicos()
         {
             var medicos = await _service.ListarProfissionaisAtivosAsync();
             return Ok(medicos);
         }
-        [HttpGet("{id}")]
+
+        [HttpGet("profissional/{id:int}")]
         public async Task<IActionResult> BuscarMedicoPorId(int id)
         {
             var medico = await _service.BuscarProfissionalPorIdAsync(id);
@@ -42,7 +44,8 @@ namespace Consultorio.Controllers
 
             return Ok(medico);
         }
-        [HttpDelete("{id}")]
+
+        [HttpDelete("profissionao/{id:int}")]
         public async Task<IActionResult> DeletarMedico(int id)
         {
             var medico = await _service.DeletarProfissionalAsync(id);

@@ -19,6 +19,8 @@ namespace Consultorio.Interfaces
 
         Task<ConsultaDTO> AtualizarConsultaAsync(int id, Consulta consultaupdate);
 
+        Task<IEnumerable<Consulta>> ListarTodasConsultasAsync();
+
 
     }
 }

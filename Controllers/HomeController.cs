@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Consultorio.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("api/[controller]")]
     public class HomeController : ControllerBase
     {
         [HttpGet]

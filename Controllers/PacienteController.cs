@@ -13,7 +13,7 @@ namespace Consultorio.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
 
     public class PacienteController : ControllerBase
     {
@@ -23,21 +23,21 @@ namespace Consultorio.Controllers
             _service = service;
         }
 
-        [HttpPost]
+        [HttpPost("paciente")]
         public async Task<IActionResult> AddPaciente([FromBody] PacienteCreateDTO dto)
         {
             var resultado = await _service.AddPacienteAsync(dto);
             return Ok(resultado);
         }
 
-        [HttpGet]
+        [HttpGet("pacientes")]
         public async Task<IActionResult> ListarPacientes()
         {
             var pacientes = await _service.ListarPacientesAsync();
             return Ok(pacientes);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("paciente/{id:int}")]
         public async Task<IActionResult> BuscarPaciente(int id)
         {
             var paciente = await _service.BuscarPacientePorIdAsync(id);
@@ -46,7 +46,7 @@ namespace Consultorio.Controllers
             return Ok(paciente);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("paciente/{id:int}")]
         public async Task<IActionResult> AtualizarPaciente(int id, Paciente pacienteupdate)
         {
             var paciente = await _service.AtualizarPacienteAsync(id, pacienteupdate);
@@ -55,7 +55,7 @@ namespace Consultorio.Controllers
             return Ok(paciente);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("paciente/{id:int}")]
         public async Task<IActionResult> DeletarPaciente(int id)
         {
             var paciente = await _service.DeletarPacienteAsync(id);

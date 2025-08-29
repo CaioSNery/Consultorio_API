@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Threading.Tasks;
 using Consultorio.Dtos;
 using Consultorio.Interfaces;
@@ -12,7 +10,7 @@ namespace Consultorio.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("v1")]
     public class EspecialidadeController : ControllerBase
     {
         private readonly IEspecialidadeService _service;
@@ -21,20 +19,20 @@ namespace Consultorio.Controllers
             _service = service;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddEspecialidade([FromBody]EspecialidadeDTO dto)
+        [HttpPost("especialidade")]
+        public async Task<IActionResult> AddEspecialidade([FromBody] EspecialidadeDTO dto)
         {
-             var especialidade = new Especialidade
-        {
-            Tipo = dto.Tipo,
-            PrecoConsulta = dto.PrecoConsulta
-        };
+            var especialidade = new Especialidade
+            {
+                Tipo = dto.Tipo,
+                PrecoConsulta = dto.PrecoConsulta
+            };
 
-              var result = await _service.AddEspecialidade(especialidade);
-             return Ok(result);
+            var result = await _service.AddEspecialidade(especialidade);
+            return Ok(result);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("especialidade/{id:int}")]
         public async Task<IActionResult> DeletarEspecialidade(int id)
         {
             var especialidade = await _service.DeletarEspecialidade(id);
