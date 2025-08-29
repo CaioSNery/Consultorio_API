@@ -12,13 +12,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Consultorio.Services
 {
-    public class ProfissionalService : IProfissionalService
+    public class ProfissionalRepository : IProfissionalRepository
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
 
 
-        public ProfissionalService(AppDbContext context, IMapper mapper)
+        public ProfissionalRepository(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -28,9 +28,9 @@ namespace Consultorio.Services
 
             var profissional = _mapper.Map<Profissional>(dto);
             _context.Profissionais.Add(profissional);
-            
+
             await _context.SaveChangesAsync();
-        
+
             return _mapper.Map<ProfissionalDTO>(profissional);
         }
 

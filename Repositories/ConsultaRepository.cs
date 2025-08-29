@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyModel.Resolution;
 
 namespace Consultorio.Services
 {
-    public class ConsultaService : IConsultaService
+    public class ConsultaRepository : IConsultaRepository
     {
 
         private readonly AppDbContext _context;
@@ -22,7 +22,9 @@ namespace Consultorio.Services
         private readonly IMapper _mapper;
 
         private readonly IMensagemService _mensagemService;
-        public ConsultaService(AppDbContext context, ISmSService service, IMapper mapper, IMensagemService mensagemService)
+        public ConsultaRepository(AppDbContext context,
+        ISmSService service, IMapper mapper,
+         IMensagemService mensagemService)
         {
 
             {

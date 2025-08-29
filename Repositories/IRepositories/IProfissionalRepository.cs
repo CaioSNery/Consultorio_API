@@ -7,7 +7,7 @@ using Consultorio.Models;
 
 namespace Consultorio.Interfaces
 {
-    public interface IProfissionalService
+    public interface IProfissionalRepository
     {
         Task<ProfissionalDTO> AddProfissionalAsync(ProfissionalCreateDTO dto);
         Task<object> BuscarProfissionalPorIdAsync(int id);

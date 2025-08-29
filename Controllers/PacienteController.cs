@@ -17,8 +17,8 @@ namespace Consultorio.Controllers
 
     public class PacienteController : ControllerBase
     {
-        private readonly IPacienteService _service;
-        public PacienteController(IPacienteService service)
+        private readonly IPacienteRepository _service;
+        public PacienteController(IPacienteRepository service)
         {
             _service = service;
         }

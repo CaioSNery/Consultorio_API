@@ -15,8 +15,8 @@ namespace Consultorio.Controllers
     [Route("v1")]
     public class ConsultaController : ControllerBase
     {
-        private readonly IConsultaService _service;
-        public ConsultaController(IConsultaService service)
+        private readonly IConsultaRepository _service;
+        public ConsultaController(IConsultaRepository service)
         {
             _service = service;
         }

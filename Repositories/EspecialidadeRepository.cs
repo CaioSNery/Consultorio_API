@@ -6,11 +6,11 @@ using Consultorio.Models;
 
 namespace Consultorio.Services
 {
-    public class EspecialidadeService : IEspecialidadeService
+    public class EspecialidadeRepository : IEspecialidadeRepository
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        public EspecialidadeService(AppDbContext context, IMapper mapper)
+        public EspecialidadeRepository(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -7,7 +7,7 @@ using Consultorio.Models;
 
 namespace Consultorio.Interfaces
 {
-    public interface IConsultaService
+    public interface IConsultaRepository
     {
         Task<ConsultaDTO> RealizarAgendamentoAsync(Consulta consulta);
 

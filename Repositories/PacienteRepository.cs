@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Consultorio.Services
 {
-    public class PacienteService : IPacienteService
+    public class PacienteRepository : IPacienteRepository
     {
 
         private readonly AppDbContext _context;
-        
+
         private readonly IMapper _mapper;
-        public PacienteService(AppDbContext context, IMapper mapper)
+        public PacienteRepository(AppDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -50,7 +50,7 @@ namespace Consultorio.Services
             var paciente = await _context.Pacientes.FindAsync(id);
             if (paciente == null) return false;
             return paciente;
-            
+
         }
 
         public async Task<bool> DeletarPacienteAsync(int id)

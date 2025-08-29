@@ -15,8 +15,8 @@ namespace Consultorio.Controllers
     [Route("v1")]
     public class ProfissionalController : ControllerBase
     {
-        private readonly IProfissionalService _service;
-        public ProfissionalController(IProfissionalService service)
+        private readonly IProfissionalRepository _service;
+        public ProfissionalController(IProfissionalRepository service)
         {
             _service = service;
         }

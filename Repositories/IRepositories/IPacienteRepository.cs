@@ -7,7 +7,7 @@ using Consultorio.Models;
 
 namespace Consultorio.Interfaces
 {
-    public interface IPacienteService
+    public interface IPacienteRepository
     {
         Task<PacienteDTO> AddPacienteAsync(PacienteCreateDTO dto);
 

@@ -13,8 +13,8 @@ namespace Consultorio.Controllers
     [Route("v1")]
     public class EspecialidadeController : ControllerBase
     {
-        private readonly IEspecialidadeService _service;
-        public EspecialidadeController(IEspecialidadeService service)
+        private readonly IEspecialidadeRepository _service;
+        public EspecialidadeController(IEspecialidadeRepository service)
         {
             _service = service;
         }

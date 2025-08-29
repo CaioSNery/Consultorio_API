@@ -30,10 +30,11 @@ namespace Consultorio_API.Extensions
 
         public static void AddRepositories(this IServiceCollection service)
         {
-            service.AddScoped<IConsultaService, ConsultaService>();
-            service.AddScoped<IEspecialidadeService, EspecialidadeService>();
-            service.AddScoped<IPacienteService, PacienteService>();
-            service.AddScoped<IProfissionalService, ProfissionalService>();
+            service.AddScoped<IConsultaRepository, ConsultaRepository>();
+            service.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
+            service.AddScoped<IPacienteRepository, PacienteRepository>();
+            service.AddScoped<ProfissionalRepository, ProfissionalRepository>();
+
 
         }
 

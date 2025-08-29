@@ -1,10 +1,6 @@
 using System.Text;
-using Consultorio.Data;
-using Consultorio.Interfaces;
-using Consultorio.Services;
 using Consultorio.Settings;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -12,8 +8,7 @@ using TwilioSettings = Consultorio.Settings.TwilioSettings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
 using Consultorio.Mappings;
-using Consultorio_API.Interfaces;
-using Consultorio_API.Services;
+
 using Consultorio_API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -91,8 +86,6 @@ builder.Services.AddSqlConnection(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddServices();
 builder.Services.AddRepositories();
-
-
 
 
 builder.Services.AddAutoMapper(cfg =>
